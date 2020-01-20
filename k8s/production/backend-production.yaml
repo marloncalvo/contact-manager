@@ -19,12 +19,12 @@ spec:
           limits:
             memory: "500Mi"
             cpu: "100m"
-          imagePullPolicy: Always
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-          command: ["npm", "start"]
-          ports:
-            - name: backend
-              containerPort: 8080
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        command: ["npm", "start"]
+        ports:
+          - name: backend
+            containerPort: 8080
