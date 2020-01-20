@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: gcr.io/cloud-solutions-images/gceme:1.0.0
+        image: gcr.io/contact-manager-265704/contact-manager-backend:latest
         resources:
           limits:
             memory: "500Mi"

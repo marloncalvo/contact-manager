@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/cloud-solutions-images/gceme:1.0.0
+        image: gcr.io/contact-manager-265704/contact-manager-frontend:latest
         resources:
           limits:
             memory: "500Mi"
@@ -22,9 +22,9 @@ spec:
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
-        command: ["npm", "start"]
+        command: ["nginx", "-g", "daemon off;"]
         ports:
         - name: frontend
           containerPort: 80
