@@ -15,6 +15,9 @@ spec:
       containers:
       - name: frontend
         image: gcr.io/contact-manager-265704/contact-manager-frontend:latest
+        env:
+          - name: MONGO_USERNAME
+            value: test
         resources:
           limits:
             memory: "500Mi"
