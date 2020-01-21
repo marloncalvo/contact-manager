@@ -43,14 +43,14 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
-            dir ('backend') {
-                sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${BE_IMAGE_TAG}"
-            }
-            
-            dir ('frontend') {
-                sh "mv Dockerfile-prod Dockerfile"
-                sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${FE_IMAGE_TAG}"
-            }
+          dir ('backend') {
+              sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${BE_IMAGE_TAG}"
+          }
+          
+          dir ('frontend') {
+              sh "mv Dockerfile-prod Dockerfile"
+              sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${FE_IMAGE_TAG}"
+          }
         }
       }
     }

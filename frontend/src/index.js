@@ -6,8 +6,18 @@ import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
-const get_test_uri = `/api/version`
-axios.get(get_test_uri)
+axios.get(`/api/version`)
+	.then((resp) => {
+		console.log(resp.data)
+	})
+	.catch(error => {
+	    if (!error.status) {
+	        console.log("Network error...");
+	    }
+	    console.log(error);
+	});
+
+axios.get(`/api/contacts`)
 	.then((resp) => {
 		console.log(resp.data)
 	})
