@@ -4,7 +4,7 @@ pipeline {
 		PROJECT      = "contact-manager-265704"
 		APP_NAME     = "contact-manager"
 		FE_SVC_NAME  = "${APP_NAME}-frontend"
-		CLUSTER      = "contact-manager"
+		CLUSTER      = "jenkins-cd"
 		CLUSTER_ZONE = "us-east1-d"
 		IMAGE_TAG    = "gcr.io/${PROJECT}/${APP_NAME}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 		JENKINS_CRED = "${PROJECT}"
@@ -43,6 +43,7 @@ spec:
 	}
 
 	stages {
+		/*
 		stage('Test') {
 			steps {
 				container('nodejs') {
@@ -59,11 +60,13 @@ spec:
 				}
 			}
 		}
+		*/
 
 		stage('Build and push image with Container Builder') {
 			steps {
 				container('gcloud') {
-					sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG}"
+					sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-frontend:latest"
+					sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-backend:latest"
 				}
 			}
 		}
