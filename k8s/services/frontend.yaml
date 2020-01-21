@@ -1,13 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: contact-manager-frontend
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: contact-manager-frontend-production-ip
+  labels:
+    app: contact-manager
+spec:
+  frontend:
+    serviceName: contact-manager-frontend
+    servicePort: 80
+---
 kind: Service
 apiVersion: v1
 metadata:
   name: contact-manager-frontend
+  labels:
+    app: contact-manager
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - name: http
     port: 80
     targetPort: 80
-    protocol: TCP
   selector:
-    role: frontend
+    app: contact-manager
