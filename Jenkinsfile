@@ -42,6 +42,14 @@ spec:
     
     stage('Build and push image with Container Builder') {
       steps {
+
+        environment {
+          MONGO_USERNAME = "test"
+          MONGO_PASSWORD = "test"
+          REACT_APP_MONGO_USERNAME = "test"
+          REACT_APP_MONGO_PASSWORD = "test"
+        }
+
         container('gcloud') {
           dir ('backend') {
               sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${BE_IMAGE_TAG}"
