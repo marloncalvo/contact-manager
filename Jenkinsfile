@@ -9,6 +9,10 @@ pipeline {
     BE_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}-frontend:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     FE_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}-backend:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     JENKINS_CRED = "${PROJECT}"
+    MONGO_USERNAME = "test"
+    MONGO_PASSWORD = "test"
+    REACT_APP_MONGO_USERNAME = "test"
+    REACT_APP_MONGO_PASSWORD = "test"
   }
 
   agent {
@@ -44,10 +48,7 @@ spec:
       steps {
 
         environment {
-          MONGO_USERNAME = "test"
-          MONGO_PASSWORD = "test"
-          REACT_APP_MONGO_USERNAME = "test"
-          REACT_APP_MONGO_PASSWORD = "test"
+
         }
 
         container('gcloud') {
