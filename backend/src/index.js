@@ -16,10 +16,13 @@ const apiPort = process.env.PORT || defaultPort
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+// For simple testing purposes.
+app.get('/api/version', function (req, res, next) {
+    res.status(200).json({ version: "1.0.0", message: "Hello, User!" })
+    next()
 })
 
 app.use('/api', contactRouter)
+
 
 app.listen(apiPort, () => console.log(` Backend server running on port ${apiPort}`))

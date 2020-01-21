@@ -6,26 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
-// Load process.env variables for mongo.
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
-const {
-    REACT_APP_SERVER_DOMAIN,
-    REACT_APP_SERVER_PORT,
-} = process.env
-
-const get_test_uri = `http://${REACT_APP_SERVER_DOMAIN}:${REACT_APP_SERVER_PORT}/`
-console.log(get_test_uri)
+const get_test_uri = `/api/version`
 axios.get(get_test_uri)
-.then(resp => console.log(resp))
-.catch(error => {
-    if (!error.status) {
-        console.log("Network error...");
-    }
-    console.log(error);
-});
+	.then((resp) => {
+		console.log(resp.data)
+	})
+	.catch(error => {
+	    if (!error.status) {
+	        console.log("Network error...");
+	    }
+	    console.log(error);
+	});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
