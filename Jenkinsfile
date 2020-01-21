@@ -24,7 +24,6 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
-    tty: true
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
     command:
