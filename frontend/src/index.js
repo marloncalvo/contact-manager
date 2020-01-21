@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
+console.log(process.env.MONGO_USERNAME)
+
 axios.get(`/api/version`)
 	.then((resp) => {
 		console.log(resp.data)
