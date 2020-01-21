@@ -9,6 +9,7 @@ pipeline {
     BE_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}-frontend:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     FE_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}-backend:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     JENKINS_CRED = "${PROJECT}"
+    REACT_APP_MONGO_USERNAME = "test"
   }
 
   agent {
