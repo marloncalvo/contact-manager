@@ -10,5 +10,4 @@ spec:
     targetPort: 80
     protocol: TCP
   selector:
-    app: contact-manager
     role: frontend
