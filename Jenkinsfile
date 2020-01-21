@@ -42,8 +42,13 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
-          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-frontend:latest"
-          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-backend:latest"
+            dir ('backend') {
+                sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-frontend:latest"
+            }
+            
+            dir ('frontend') {
+                sh "PYTHONUNBUFFERED=1 gcloud builds submit -t gcr.io/contact-manager-265704/contact-manager-backend:latest"
+            }
         }
       }
     }
