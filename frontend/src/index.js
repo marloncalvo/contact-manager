@@ -6,16 +6,13 @@ import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
-console.log(process.env.MONGO_USERNAME)
+console.log('Test Environment Variable... ' + process.env.REACT_APP_MONGO_USERNAME)
 
 axios.get(`/api/version`)
 	.then((resp) => {
 		console.log(resp.data)
 	})
 	.catch(error => {
-	    if (!error.status) {
-	        console.log("Network error...");
-	    }
 	    console.log(error);
 	});
 
@@ -24,9 +21,6 @@ axios.get(`/api/contacts`)
 		console.log(resp.data)
 	})
 	.catch(error => {
-	    if (!error.status) {
-	        console.log("Network error...");
-	    }
 	    console.log(error);
 	});
 
