@@ -44,6 +44,9 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
+
+          sh "./env_setup_scripts/setup_defaults.sh"
+
           dir ('backend') {
               sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${BE_IMAGE_TAG}"
           }
