@@ -17,13 +17,15 @@ axios.get(`/api/version`)
 	    console.log(error);
 	});
 
+/*
 axios.get(`/api/contacts`)
 	.then((resp) => {
-		console.log("Contacts bad!" + resp.data)
+		console.log("Contacts good!" + resp.data)
 	})
 	.catch(error => {
 	    console.log(error);
 	});
+*/
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
