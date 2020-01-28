@@ -17,8 +17,8 @@ const options = {
   useUnifiedTopology: true
 }
 
-
-const uri = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_CLUSTER}-cwnt0.mongodb.net/test?retryWrites=true&w=majority`
+//const uri = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_CLUSTER}-cwnt0.mongodb.net/test?retryWrites=true&w=majority`
+const uri = `mongodb+srv://test:test@contact-manager-test-cluster0-cwnt0.mongodb.net/test?retryWrites=true&w=majority`
 console.log(`MOGNODB Server url: ${uri}`)
 
 mongoose

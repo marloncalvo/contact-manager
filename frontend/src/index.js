@@ -11,7 +11,7 @@ console.log('Test Environment Variable... ' + process.env.MONGO_USERNAME)
 
 axios.get(`/api/version`)
 	.then((resp) => {
-		console.log(resp.data)
+		console.log("Version ok!" + resp.data)
 	})
 	.catch(error => {
 	    console.log(error);
@@ -19,7 +19,7 @@ axios.get(`/api/version`)
 
 axios.get(`/api/contacts`)
 	.then((resp) => {
-		console.log(resp.data)
+		console.log("Contacts bad!" + resp.data)
 	})
 	.catch(error => {
 	    console.log(error);
