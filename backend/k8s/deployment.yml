@@ -15,10 +15,6 @@ spec:
       containers:
       - name: backend
         image: gcr.io/GKE_PROJECT/IMAGE:TAG
-        resources:
-          limits:
-            memory: "500Mi"
-            cpu: "100m"
         imagePullPolicy: Always
         #readinessProbe:
         #  httpGet:
