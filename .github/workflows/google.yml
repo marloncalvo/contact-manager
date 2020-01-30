@@ -49,12 +49,16 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
       
-    # Build the Frontend Docker image
-    - name: Build Frontend
-      working-directory: ./frontend
+    - name: Change Backend Dockerfile
+      working-directory: ./backend
       run: |
         mv Dockerfile-prod Dockerfile
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$FRONTEND_IMAGE":"$GITHUB_SHA" \
+
+    # Build the Frontend Docker image
+    - name: Build Backend
+      working-directory: ./backend
+      run: |
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$BACKEND_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF"
 
