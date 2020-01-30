@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: contact-manager-frontend-production
+  name: contact-manager-frontend
 spec:
   replicas:
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/contact-manager-265704/contact-manager-frontend:latest
+        image: gcr.io/GKE_PROJECT/IMAGE:TAG
         resources:
           limits:
             memory: "500Mi"

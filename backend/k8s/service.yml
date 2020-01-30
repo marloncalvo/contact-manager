@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: contact-manager-backend
+  name: contact-manager-backend-service
 spec:
   ports:
   - name: http
