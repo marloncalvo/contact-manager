@@ -9,6 +9,7 @@ import axios from 'axios';
 console.log('Test Environment Variable... ' + process.env.REACT_APP_MONGO_USERNAME)
 console.log('Test Environment Variable... ' + process.env.MONGO_USERNAME)
 
+/*
 axios.get(`/api/version`)
 	.then((resp) => {
 		console.log("Version ok!" + resp.data)
@@ -16,6 +17,7 @@ axios.get(`/api/version`)
 	.catch(error => {
 	    console.log(error);
 	});
+	*/
 
 /*
 axios.get(`/api/contacts`)
