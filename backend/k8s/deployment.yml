@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: gcr.io/GKE_PROJECT/BACKEND_IMAGE:TAG
+        image: gcr.io/GKE_PROJECT/IMAGE:TAG
         resources:
           limits:
             memory: "500Mi"
