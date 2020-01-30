@@ -48,11 +48,6 @@ jobs:
         # Set up docker to authenticate
         # via gcloud command-line tool.
         gcloud auth configure-docker
-      
-    - name: Change Backend Dockerfile
-      working-directory: ./backend
-      run: |
-        mv Dockerfile-prod Dockerfile
 
     # Build the Frontend Docker image
     - name: Build Backend
@@ -63,7 +58,7 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF"
 
     # Push the Docker image to Google Container Registry
-    - name: Publish Frontend
+    - name: Publish Backend
       run: |
         docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$FRONTEND_IMAGE:$GITHUB_SHA
         
@@ -74,7 +69,7 @@ jobs:
         chmod u+x ./kustomize
 
     # Deploy the Docker image to the GKE cluster
-    - name: Deploy Frontend
+    - name: Deploy Backend
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         ./kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
