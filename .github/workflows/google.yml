@@ -55,7 +55,7 @@ jobs:
       run: |
         docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$BACKEND_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF"
+          --build-arg GITHUB_REF="$GITHUB_REF" .
 
     # Push the Docker image to Google Container Registry
     - name: Publish Backend
