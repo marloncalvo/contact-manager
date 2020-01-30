@@ -20,6 +20,8 @@ After you've finished installing all the required software.
 2. If you are using Windows, please run the setup_win.bat as administrator, which will restart your PC (must run).
   ![HOWTO](https://i.imgur.com/bRyphN9.png "Run as admin")
 
+test
+
 3. Start your favorite terminal / command prompt.  
    If on Windows, start with administrative mode. (Must do!)  
    ![HOWTO](https://i.imgur.com/s27M0cm.png "Run as admin")
