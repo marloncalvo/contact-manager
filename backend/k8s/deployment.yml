@@ -16,6 +16,12 @@ spec:
       - name: backend
         image: gcr.io/GKE_PROJECT/IMAGE:TAG
         imagePullPolicy: Always
+        limits:
+          memory: "500Mi"
+          cpu: "350m"
+        requests:
+          memory: "500Mi"
+          cpu: "350m"
         livenessProbe:
           initialDelaySeconds: 2
           periodSeconds: 5
