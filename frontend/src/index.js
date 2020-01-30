@@ -9,15 +9,21 @@ import axios from 'axios';
 console.log('Test Environment Variable... ' + process.env.REACT_APP_MONGO_USERNAME)
 console.log('Test Environment Variable... ' + process.env.MONGO_USERNAME)
 
-/*
 axios.get(`/api/version`)
-	.then((resp) => {
-		console.log("Version ok!" + resp.data)
-	})
-	.catch(error => {
-	    console.log(error);
-	});
-	*/
+.then((resp) => {
+	console.log("Version ok!" + resp.data)
+})
+.catch(error => {
+	console.log(`Axios error: ${error}`);
+});
+
+fetch('api/version')
+.then((resp) => {
+	console.log(resp)
+})
+.catch(error => {
+	console.log(`Fetch error: ${error}`)
+})
 
 /*
 axios.get(`/api/contacts`)
