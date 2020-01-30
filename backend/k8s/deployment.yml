@@ -21,7 +21,7 @@ spec:
             memory: "250Mi"
             cpu: "150m"
           requests:
-            memory: "500Mi"
+            memory: "250Mi"
             cpu: "150m"
         livenessProbe:
           initialDelaySeconds: 2
