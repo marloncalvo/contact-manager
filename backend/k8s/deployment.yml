@@ -17,11 +17,11 @@ spec:
         image: gcr.io/GKE_PROJECT/IMAGE:TAG
         imagePullPolicy: Always
         limits:
-          memory: "500Mi"
-          cpu: "350m"
+          memory: "250Mi"
+          cpu: "100m"
         requests:
-          memory: "500Mi"
-          cpu: "350m"
+          memory: "250Mi"
+          cpu: "100m"
         livenessProbe:
           initialDelaySeconds: 2
           periodSeconds: 5
