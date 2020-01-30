@@ -16,6 +16,13 @@ spec:
       - name: backend
         image: gcr.io/GKE_PROJECT/IMAGE:TAG
         imagePullPolicy: Always
+        livenessProbe:
+          initialDelaySeconds: 2
+          periodSeconds: 5
+          httpGet:
+            path: /api/health
+            port: 8080
+
         #readinessProbe:
         #  httpGet:
         #    path: /healthz

@@ -22,6 +22,10 @@ app.get('/api/version', function (req, res, next) {
     next()
 })
 
+app.get('/api/health', function(req, res, next) {
+	res.status(200).json({ message: "We are healthy!" })
+})
+
 app.use('/api', contactRouter)
 
 
