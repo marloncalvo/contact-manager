@@ -18,7 +18,7 @@ spec:
         resources:
           limits:
             memory: "500Mi"
-            cpu: "100m"
+            cpu: "250m"
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
