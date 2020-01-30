@@ -4,36 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import axios from 'axios';
-
-console.log('Test Environment Variable... ' + process.env.REACT_APP_MONGO_USERNAME)
-console.log('Test Environment Variable... ' + process.env.MONGO_USERNAME)
-
-axios.get(`api/version`)
-.then((resp) => {
-	console.log("Version ok!" + resp.data)
-})
-.catch(error => {
-	console.log(`Axios error: ${error}`);
-});
-
-fetch('api/version')
-.then((resp) => {
-	console.log(resp)
-})
-.catch(error => {
-	console.log(`Fetch error: ${error}`)
-})
-
-/*
-axios.get(`/api/contacts`)
-	.then((resp) => {
-		console.log("Contacts good!" + resp.data)
-	})
-	.catch(error => {
-	    console.log(error);
-	});
-*/
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
