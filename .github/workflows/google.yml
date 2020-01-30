@@ -22,9 +22,10 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: us-east1-d
   GKE_CLUSTER: jenkins-cd 
-  IMAGE: gke-test
+  FRONTEND_IMAGE: frontend
+  BACKEND_IMAGE: backend
   REGISTRY_HOSTNAME: gcr.io
-  DEPLOYMENT_NAME: gke-test
+  DEPLOYMENT_NAME: contact-manager
 
 jobs:
   setup-build-publish-deploy:
@@ -48,18 +49,19 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
       
-    # Build the Docker image
-    - name: Build
+    # Build the Frontend Docker image
+    - name: Build Frontend
       working-directory: ./frontend
       run: |
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+        mv Dockerfile-prod Dockerfile
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$FRONTEND_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" .
+          --build-arg GITHUB_REF="$GITHUB_REF"
 
     # Push the Docker image to Google Container Registry
-    - name: Publish
+    - name: Publish Frontend
       run: |
-        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
+        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$FRONTEND_IMAGE:$GITHUB_SHA
         
     # Set up kustomize
     - name: Set up Kustomize
@@ -68,7 +70,7 @@ jobs:
         chmod u+x ./kustomize
 
     # Deploy the Docker image to the GKE cluster
-    - name: Deploy
+    - name: Deploy Frontend
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         ./kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
