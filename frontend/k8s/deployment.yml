@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 metadata:
   name: contact-manager-frontend
 spec:
-  replicas: 4
+  replicas: 2
   template:
     metadata:
       name: frontend
@@ -15,10 +15,6 @@ spec:
       containers:
       - name: frontend
         image: gcr.io/GKE_PROJECT/IMAGE:TAG
-        resources:
-          limits:
-            memory: "800Mi"
-            cpu: "250m"
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
