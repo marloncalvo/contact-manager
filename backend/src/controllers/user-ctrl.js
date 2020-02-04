@@ -37,7 +37,7 @@ authenticate = async (req, res, next) => {
 
 	User.findById(payload.id, function(err, user) {
 		if (!user) {
-			return req.status(404).send({ logged_in: false })
+			return res.status(404).send({ logged_in: false })
 		}
 		else {
 			req.logged_in = true;
